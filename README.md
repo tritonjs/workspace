@@ -2,13 +2,9 @@
 
 This service handles workspaces containers.
 
-## TODO
+## Setup
 
-* [x] Implement workspace deletion across "cluster"
-* [ ] Implement User Auth check?? Is it even needed.
-* [ ] Fully hook into rancher / non-rancher environments.
-* [x] Implement Assignment POST
-
+1. Use docker-compose (see [dev](https://github.com/tritonjs/dev))
 
 ## License
 
