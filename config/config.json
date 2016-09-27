@@ -13,9 +13,9 @@
   },
   "docker": {
     "image": "repo.tritonjs.com:5000/c9.io",
-    "backend_advertise": "https://api.tritonjs.com:80",
-    "workspaces": "/userfiles"
+    "backend_advertise": "https://api.tritonjs.com:80"
   },
+  "host_mount": "/userfiles",
   "debug": true,
   "colors": true
 }
