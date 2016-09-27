@@ -1,0 +1,35 @@
+{
+  "name": "triton-workspace",
+  "version": "1.0.0",
+  "description": "Workspace service for TRITON",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tritonjs/workspace.git"
+  },
+  "keywords": [
+    "workspace",
+    "triton",
+    "microservice"
+  ],
+  "author": "Jared Allard <jaredallard@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tritonjs/workspace/issues"
+  },
+  "homepage": "https://github.com/tritonjs/workspace#readme",
+  "dependencies": {
+    "aqb": "^2.1.0",
+    "arangojs": "^5.0.3",
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "debug": "^2.2.0",
+    "dockerode": "^2.3.1",
+    "express": "^4.14.0",
+    "hiredis": "^0.5.0",
+    "ioredis": "^2.3.0"
+  }
+}
