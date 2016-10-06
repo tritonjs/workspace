@@ -79,7 +79,7 @@ app.post('/healthcheck', (req, res) => {
 })
 
 app.post('/updateImage', (req, res) => {
-  workspace.updateImage();
+  workspace.updateWrapper();
 
   return res.send('OK');
 })
