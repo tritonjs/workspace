@@ -86,11 +86,13 @@ app.post('/updateImage', (req, res) => {
 
 app.post('/heartbeat', (req, res) => {
   if(!req.body.username) {
-    return res.send('FAIL');
+    return res.status(400).send('FAIL');
   }
 
   workspace.heartbeat(req.body.username, err => {
-    return res.send('OK');
+    if(err) return res.status(400).send('FAIL');
+    
+    return res.status(200).send('OK');
   });
 })
 
