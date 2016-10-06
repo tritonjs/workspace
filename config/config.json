@@ -12,7 +12,7 @@
     ]
   },
   "docker": {
-    "image": "repo.tritonjs.com:5000/c9.io",
+    "image": "repo.tritonjs.com:5000/c9.io:latest",
     "backend_advertise": "https://api.tritonjs.com:80"
   },
   "host_mount": "/userfiles",

@@ -78,6 +78,12 @@ app.post('/healthcheck', (req, res) => {
   return res.send('OK');
 })
 
+app.post('/updateImage', (req, res) => {
+  workspace.updateImage();
+
+  return res.send('OK');
+})
+
 app.post('/heartbeat', (req, res) => {
   if(!req.body.username) {
     return res.send('FAIL');
