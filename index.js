@@ -74,6 +74,10 @@ app.post('/start', (req, res) => {
   })
 })
 
+app.post('/healthcheck', (req, res) => {
+  return res.send('OK');
+})
+
 app.post('/heartbeat', (req, res) => {
   if(!req.body.username) {
     return res.send('FAIL');
