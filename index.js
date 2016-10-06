@@ -74,4 +74,18 @@ app.post('/start', (req, res) => {
   })
 })
 
+app.post('/heartbeat', (req, res) => {
+  if(!req.body.username) {
+    return res.send('FAIL');
+  }
+
+  workspace.heatbeat({
+    username: req.body.username
+  }, err => {
+    if(err) return res.send('FAIL');
+
+    return res.send('OK');
+  });
+})
+
 app.listen(80);
