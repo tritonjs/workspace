@@ -90,8 +90,6 @@ app.post('/heartbeat', (req, res) => {
   }
 
   workspace.heartbeat(req.body.username, err => {
-    if(err) return res.send('FAIL');
-
     return res.send('OK');
   });
 })
