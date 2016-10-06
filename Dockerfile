@@ -3,6 +3,8 @@ FROM mhart/alpine-node:latest
 # Apline specific.
 RUN apk add --update --no-cache make gcc g++ python bash git
 
+# Attempt to build images faster.
+RUN npm install
 RUN npm install -g pm2
 WORKDIR /workspace
 
