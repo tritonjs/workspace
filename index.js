@@ -28,7 +28,7 @@ const bodyP   = require('body-parser');
 const raven   = require('raven');
 
 // catch exceptions for sentry
-if(config.enabled.sentry) {
+if(config.sentry.enabled) {
   console.log('NOTICE: Sentry *is* enabled.')
   let client = new raven.Client(config.sentry.DSN);
   client.patchGlobal();
