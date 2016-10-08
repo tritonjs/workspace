@@ -6,14 +6,7 @@
  * @version 1.1.0
  **/
 
-let config;
-try {
-  config  = require('./config/config.json')
-} catch(e) {
-  console.log('Error:', 'no config found. (./config/config.json)');
-  console.log('Stack Trace:', e);
-  process.exit(1)
-}
+const config = require('./lib/config.js');
 
 global.config = config;
 
@@ -32,7 +25,14 @@ const Db      = require('./lib/db.js');
 const Auth    = require('./lib/auth.js');
 const express = require('express');
 const bodyP   = require('body-parser');
+const raven   = require('raven');
 
+// catch exceptions for sentry
+if(config.enabled.sentry) {
+  console.log('NOTICE: Sentry *is* enabled.')
+  let client = new raven.Client(config.sentry.DSN);
+  client.patchGlobal();
+}
 
 let app       = express();
 let redis     = Redis();
@@ -40,9 +40,11 @@ let db        = new Db(config);
 let auth      = new Auth(db);
 let workspace = require('./lib/workspace.js')(db, auth, redis);
 
+/**
+ * sentry
+ **/
+if(config.sentry.enabled) app.use(raven.middleware.express.requestHandler(config.sentry.DSN));
 app.use(bodyP.json());
-
-
 
 app.post('/post', (req, res) => {
   if(!req.body.auth || !req.body.ip) {
@@ -91,9 +93,11 @@ app.post('/heartbeat', (req, res) => {
 
   workspace.heartbeat(req.body.username, err => {
     if(err) return res.status(400).send('FAIL');
-    
+
     return res.status(200).send('OK');
   });
 })
+
+if(config.sentry.enabled) app.use(raven.middleware.express.errorHandler(config.sentry.DSN));
 
 app.listen(80);
